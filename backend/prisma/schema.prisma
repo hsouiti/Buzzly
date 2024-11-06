@@ -1,0 +1,160 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  EDITOR
+  VIEWER
+}
+
+enum Platform {
+  FACEBOOK
+  TWITTER
+  INSTAGRAM
+  LINKEDIN
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  FAILED
+}
+
+enum ReactionType {
+  LIKE
+  SHARE
+  RETWEET
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String?
+  role      Role
+  brands    Brand[]  // Relation: A user can manage multiple brands
+  mediaAssets MediaAsset[] // Relation: User's uploaded media assets
+  posts     Post[]   // Relation: Posts created by user
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Brand {
+  id          String   @id @default(uuid())
+  userId      String
+  name        String
+  description String?
+  accounts    Account[] // Relation: Brand's social media accounts
+  posts       Post[]   // Relation: Posts associated with this brand
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id             String     @id @default(uuid())
+  brandId        String
+  platform       Platform
+  accountHandle  String
+  accessToken    String
+  refreshToken   String
+  expiresAt      DateTime
+  posts          Post[]     // Relation: Posts published on this account
+  comments       Comment[]  // Relation: Comments on posts of this account
+  reactions      Reaction[] // Relation: Reactions to posts on this account
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  brand Brand @relation(fields: [brandId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+  id          String     @id @default(uuid())
+  accountId   String
+  brandId     String
+  userId      String
+  content     String
+  mediaUrl    String?
+  scheduledAt DateTime?
+  publishedAt DateTime?
+  status      PostStatus
+  comments    Comment[]   // Relation: Comments on this post
+  reactions   Reaction[]  // Relation: Reactions on this post
+  analytics   Analytics[] // Relation: Analytics for this post
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  brand   Brand   @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  postId    String
+  accountId String
+  content   String
+  userName  String // Name of the commenter on the social platform
+  createdAt DateTime @default(now())
+
+  post    Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+
+model Reaction {
+  id          String      @id @default(uuid())
+  postId      String
+  accountId   String
+  reactionType ReactionType
+  count       Int
+  updatedAt   DateTime @updatedAt
+
+  post    Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+
+model MediaAsset {
+  id        String    @id @default(uuid())
+  userId    String
+  url       String
+  type      MediaType
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Analytics {
+  id             String   @id @default(uuid())
+  postId         String
+  impressions    Int
+  engagementRate Float
+  reach          Int
+  createdAt      DateTime @default(now())
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+}

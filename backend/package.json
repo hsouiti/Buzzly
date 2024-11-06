@@ -1,0 +1,21 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "@Hsouiti",
+  "license": "MIT",
+  "scripts": {
+    "seed": "ts-node ./prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.21.1",
+    "express": "5.0.0-alpha.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "prisma": "^5.21.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
