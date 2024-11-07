@@ -1,4 +1,5 @@
 import express  from 'express';
+import authRoutes from './routes/auth-routes'
 const app = express();
 
 app
@@ -8,9 +9,17 @@ app
 
 
 // routes
+// auth 
+app.use('/api/v1/auth', authRoutes);
 
-app.get('/api/v1', (req, res) => {
-    res.send('Hello World!')
+
+//home
+ app.get('/api/v1', (req, res) => {
+    res.send('Api version 1.0');
+}); 
+
+app.use((req, res) => {
+     res.status(404).send("404 - Route not found");
 });
 
 export default app;
