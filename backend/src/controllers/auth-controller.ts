@@ -1,10 +1,10 @@
 import {  NextFunction, Request,  Response } from "express"
-import {AuthError, AuthResponse, RegisterRequest, User} from '@sharedTypes/auth.d'
+import {AuthError, AuthResponse, LoginRequest, RegisterRequest, User} from '@sharedTypes/auth.d'
 import {db} from '../config/db'
 import {Role} from '../../../shared-types/enums' 
 
-import { generateToken, generateVerificationToken, hashPassword } from "../utils/auth-utils";
-import { checkIsValidEmail, checkPassword } from "../utils/helpers";
+import { checkIfUserExist, comparePasswords, generateToken, generateVerificationToken, hashPassword } from "../utils/auth-utils";
+import { checkIsValidEmail, checkPassword, getUserByEmail } from "../utils/helpers";
 import { createError } from "../middleware/errors-handler";
 
 
@@ -18,6 +18,7 @@ export const register = async(
     const {name, email, password} = req.body
      const requiredFields = ['name', 'email', 'password']
      try {
+
     // Inputs Validation
         // empty fields      
         for (const field of requiredFields) {
@@ -26,7 +27,6 @@ export const register = async(
                     
             }
         } 
-
        
       
     // valid email
@@ -86,6 +86,52 @@ export const register = async(
 
 
 
-export const login = (req: Request, res: Response) =>{
-    res.send('login!')
+export const login = async(
+    req: Request<{}, {}, LoginRequest>,
+     res: Response<AuthResponse | AuthError>,
+      next: NextFunction) =>{
+    const {email,password} = req.body
+    try {
+
+        // inputs Validation
+        if(!email) throw createError('Email is required', 400)
+        if(!password) throw createError('Password is required', 400)
+
+        if(!checkIsValidEmail(email)) throw createError ('Invalid email format', 400)
+
+        // Check if the user exist
+        const user = await getUserByEmail(email)
+        if(!user)  {
+            throw createError('User does not exist', 400);
+        }
+        if(user && user.password) {
+
+            // Check if the credentials are correct
+            const isPasswordCorrect = await comparePasswords(password, user.password)
+            if(!isPasswordCorrect) throw createError('Invalid credentials', 400)
+             const token  = await generateToken(user.id)
+            
+             const sanitizedUser = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            };
+
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'Login successful',
+                token,
+                user:sanitizedUser
+            })
+
+
+    }
+        // TODO:Check if the user is verified
+        
+
+
+    } catch (error) {
+        next(error)
+    }
 }

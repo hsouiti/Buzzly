@@ -1,3 +1,6 @@
+import { User } from "@sharedTypes/prisma"
+import { db } from "@/config/db"
+
 
 export const checkIsValidEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -20,3 +23,7 @@ export  const checkPassword = (password: string) => {
     return passwordRegex.test(password)
 }
 
+
+export const getUserByEmail = async (email: string): Promise<User | null> => {
+    return await db.user.findUnique({where: {email}})
+}
