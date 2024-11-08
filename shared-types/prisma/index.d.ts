@@ -1719,6 +1719,10 @@ export namespace Prisma {
     email: string | null
     password: string | null
     role: $Enums.Role | null
+    verificationToken: string | null
+    verificationTokenExpires: Date | null
+    resetPasswordToken: string | null
+    resetPasswordTokenExpires: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1729,6 +1733,10 @@ export namespace Prisma {
     email: string | null
     password: string | null
     role: $Enums.Role | null
+    verificationToken: string | null
+    verificationTokenExpires: Date | null
+    resetPasswordToken: string | null
+    resetPasswordTokenExpires: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1739,6 +1747,10 @@ export namespace Prisma {
     email: number
     password: number
     role: number
+    verificationToken: number
+    verificationTokenExpires: number
+    resetPasswordToken: number
+    resetPasswordTokenExpires: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1751,6 +1763,10 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
+    verificationToken?: true
+    verificationTokenExpires?: true
+    resetPasswordToken?: true
+    resetPasswordTokenExpires?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1761,6 +1777,10 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
+    verificationToken?: true
+    verificationTokenExpires?: true
+    resetPasswordToken?: true
+    resetPasswordTokenExpires?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1771,6 +1791,10 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
+    verificationToken?: true
+    verificationTokenExpires?: true
+    resetPasswordToken?: true
+    resetPasswordTokenExpires?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1854,6 +1878,10 @@ export namespace Prisma {
     email: string
     password: string | null
     role: $Enums.Role
+    verificationToken: string | null
+    verificationTokenExpires: Date | null
+    resetPasswordToken: string | null
+    resetPasswordTokenExpires: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1881,6 +1909,10 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
+    verificationToken?: boolean
+    verificationTokenExpires?: boolean
+    resetPasswordToken?: boolean
+    resetPasswordTokenExpires?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     brands?: boolean | User$brandsArgs<ExtArgs>
@@ -1895,6 +1927,10 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
+    verificationToken?: boolean
+    verificationTokenExpires?: boolean
+    resetPasswordToken?: boolean
+    resetPasswordTokenExpires?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1905,6 +1941,10 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
+    verificationToken?: boolean
+    verificationTokenExpires?: boolean
+    resetPasswordToken?: boolean
+    resetPasswordTokenExpires?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -1930,6 +1970,10 @@ export namespace Prisma {
       email: string
       password: string | null
       role: $Enums.Role
+      verificationToken: string | null
+      verificationTokenExpires: Date | null
+      resetPasswordToken: string | null
+      resetPasswordTokenExpires: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2333,6 +2377,10 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
+    readonly verificationToken: FieldRef<"User", 'String'>
+    readonly verificationTokenExpires: FieldRef<"User", 'DateTime'>
+    readonly resetPasswordToken: FieldRef<"User", 'String'>
+    readonly resetPasswordTokenExpires: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -9752,6 +9800,10 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     role: 'role',
+    verificationToken: 'verificationToken',
+    verificationTokenExpires: 'verificationTokenExpires',
+    resetPasswordToken: 'resetPasswordToken',
+    resetPasswordTokenExpires: 'resetPasswordTokenExpires',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -10018,6 +10070,10 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     password?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    verificationToken?: StringNullableFilter<"User"> | string | null
+    verificationTokenExpires?: DateTimeNullableFilter<"User"> | Date | string | null
+    resetPasswordToken?: StringNullableFilter<"User"> | string | null
+    resetPasswordTokenExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     brands?: BrandListRelationFilter
@@ -10031,6 +10087,10 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrderInput | SortOrder
     role?: SortOrder
+    verificationToken?: SortOrderInput | SortOrder
+    verificationTokenExpires?: SortOrderInput | SortOrder
+    resetPasswordToken?: SortOrderInput | SortOrder
+    resetPasswordTokenExpires?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     brands?: BrandOrderByRelationAggregateInput
@@ -10047,6 +10107,10 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     password?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    verificationToken?: StringNullableFilter<"User"> | string | null
+    verificationTokenExpires?: DateTimeNullableFilter<"User"> | Date | string | null
+    resetPasswordToken?: StringNullableFilter<"User"> | string | null
+    resetPasswordTokenExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     brands?: BrandListRelationFilter
@@ -10060,6 +10124,10 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrderInput | SortOrder
     role?: SortOrder
+    verificationToken?: SortOrderInput | SortOrder
+    verificationTokenExpires?: SortOrderInput | SortOrder
+    resetPasswordToken?: SortOrderInput | SortOrder
+    resetPasswordTokenExpires?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -10076,6 +10144,10 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+    verificationToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    verificationTokenExpires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    resetPasswordToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetPasswordTokenExpires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -10586,6 +10658,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandCreateNestedManyWithoutUserInput
@@ -10599,6 +10675,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandUncheckedCreateNestedManyWithoutUserInput
@@ -10612,6 +10692,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUpdateManyWithoutUserNestedInput
@@ -10625,6 +10709,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUncheckedUpdateManyWithoutUserNestedInput
@@ -10638,6 +10726,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10648,6 +10740,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10658,6 +10754,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11217,6 +11317,17 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11269,6 +11380,10 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpires?: SortOrder
+    resetPasswordToken?: SortOrder
+    resetPasswordTokenExpires?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11279,6 +11394,10 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpires?: SortOrder
+    resetPasswordToken?: SortOrder
+    resetPasswordTokenExpires?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11289,6 +11408,10 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpires?: SortOrder
+    resetPasswordToken?: SortOrder
+    resetPasswordTokenExpires?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11337,6 +11460,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11473,17 +11610,6 @@ export namespace Prisma {
     _max?: NestedEnumPlatformFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type EnumPostStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.PostStatus | EnumPostStatusFieldRefInput<$PrismaModel>
     in?: $Enums.PostStatus[] | ListEnumPostStatusFieldRefInput<$PrismaModel>
@@ -11546,20 +11672,6 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EnumPostStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -11845,6 +11957,10 @@ export namespace Prisma {
 
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -12237,10 +12353,6 @@ export namespace Prisma {
     connect?: AnalyticsWhereUniqueInput | AnalyticsWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type EnumPostStatusFieldUpdateOperationsInput = {
     set?: $Enums.PostStatus
   }
@@ -12496,6 +12608,17 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -12573,6 +12696,20 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -12604,36 +12741,11 @@ export namespace Prisma {
     _max?: NestedEnumPlatformFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedEnumPostStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.PostStatus | EnumPostStatusFieldRefInput<$PrismaModel>
     in?: $Enums.PostStatus[] | ListEnumPostStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.PostStatus[] | ListEnumPostStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumPostStatusFilter<$PrismaModel> | $Enums.PostStatus
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumPostStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -12996,6 +13108,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mediaAssets?: MediaAssetCreateNestedManyWithoutUserInput
@@ -13008,6 +13124,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     mediaAssets?: MediaAssetUncheckedCreateNestedManyWithoutUserInput
@@ -13083,6 +13203,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mediaAssets?: MediaAssetUpdateManyWithoutUserNestedInput
@@ -13095,6 +13219,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     mediaAssets?: MediaAssetUncheckedUpdateManyWithoutUserNestedInput
@@ -13465,6 +13593,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandCreateNestedManyWithoutUserInput
@@ -13477,6 +13609,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandUncheckedCreateNestedManyWithoutUserInput
@@ -13635,6 +13771,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUpdateManyWithoutUserNestedInput
@@ -13647,6 +13787,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUncheckedUpdateManyWithoutUserNestedInput
@@ -13963,6 +14107,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandCreateNestedManyWithoutUserInput
@@ -13975,6 +14123,10 @@ export namespace Prisma {
     email: string
     password?: string | null
     role: $Enums.Role
+    verificationToken?: string | null
+    verificationTokenExpires?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordTokenExpires?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     brands?: BrandUncheckedCreateNestedManyWithoutUserInput
@@ -14003,6 +14155,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUpdateManyWithoutUserNestedInput
@@ -14015,6 +14171,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordTokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     brands?: BrandUncheckedUpdateManyWithoutUserNestedInput

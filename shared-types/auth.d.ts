@@ -6,10 +6,29 @@ export interface User {
     email: string;
     password: string | null;
     role: Role;
+    verificationToken?: string | null;
+    verificationTokenExpires?: Date | null;  
+    resetPasswordToken?: string | null;
+    resetPasswordTokenExpires?: Date | null;
     createdAt: Date;
     updatedAt: Date;
 }
 
+export type PublicUser = Omit<User, 'password' | 'createdAt' | 'updatedAt' | 'verificationTokenExpires'>;
+
+export type UserUpdateInput = {
+   id: string;
+    name: string;
+    email: string;
+    password: string | null;
+    role: Role;
+    verificationToken?: string | null;
+    verificationTokenExpires?: Date | null;  
+    resetPasswordToken?: string | null;
+    resetPasswordTokenExpires?: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+};
 
 export interface JwtPayload  {
     userId: string;
@@ -29,8 +48,9 @@ export interface RegisterRequest {
 }
 
 export interface AuthResponse {
-    user: User;
-    token: string;
+    user: PublicUser;
+    token?: string;
+    message: string;
 }
 
 
