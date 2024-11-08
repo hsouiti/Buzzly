@@ -5,6 +5,7 @@ import {Role} from '../../../shared-types/enums'
 
 import { generateToken, generateVerificationToken, hashPassword } from "../utils/auth-utils";
 import { checkIsValidEmail, checkPassword } from "../utils/helpers";
+import { createError } from "../middleware/errors-handler";
 
 
 export const register = async(
@@ -13,55 +14,33 @@ export const register = async(
     next: NextFunction 
     
 ) =>{
-    console.log('Received request with body:', req.body);
    
     const {name, email, password} = req.body
      const requiredFields = ['name', 'email', 'password']
      try {
-               // Inputs Validation
+    // Inputs Validation
         // empty fields      
         for (const field of requiredFields) {
             if(!(req.body as any)[field]){
-                return res.
-                        status(400)
-                        .json(
-                            {
-                                statusCode: 400, 
-                                message: `the  ${field} field is required`
-                            }
-                        )        
+                throw createError(`the  ${field} field is required`, 400)
+                    
             }
         } 
 
        
       
     // valid email
-    if(!checkIsValidEmail(email)){
-        return res.status(400).json({
-            statusCode: 400,
-            message: 'Invalid email format'
-        })
-    }
-
+    if(!checkIsValidEmail(email)) throw createError ('Invalid email format', 400)
+   
     // valid password
-    if(!checkPassword(password)){
-        return res.status(400).json({
-            statusCode: 400,
-            message: 'Password does not meet requirements'
-        })
-    }
+    if(!checkPassword(password)) throw createError(`Password does not meet requirements`, 400)
        
-
-            
+      
+               
     // Check if the user already exist
     const existUser = await db.user.findUnique({where: {email}})
-    if(existUser){
-        return res.status(400).json({
-            statusCode: 400, 
-            message: 'User already exists'
-        })
-    }
- 
+    if(existUser)  throw createError('User already exists', 400);
+        
     // Password Hashing:
     const hashedPassword = await hashPassword(password)
     
@@ -99,7 +78,6 @@ export const register = async(
     });
         
     } catch (error){
-            console.error('Error during registration:', error);
         next(error)
     }
 }
